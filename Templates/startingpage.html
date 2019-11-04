@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>STARTING PAGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="main.js"></script>
+  </head>
+  <style>
+    .flex-container {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 200px;
+    }
+    .flex-container > div {
+      width: 25%;
+      height: 60px;
+      margin: 5px;
+      border-radius: 3px;
+      padding: 7pc;
+    }
+    .info{
+      font-size: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .btn{
+      background-color: rgb(7, 32, 74);
+      border: none;
+      border-radius: 5px;
+      padding: 4px;
+      transition: 400ms;
+    }
+
+    .btn:hover{
+      background-color: rgb(232, 188, 42);
+    }
+
+    .info:hover{
+      color:black;
+      transition:400ms;
+    }
+  </style>
+  <body style="background-color:#FF0C3B;">
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div> 
+    <div class="flex-container">
+      <div class='row'> 
+        <button class="btn"><a class='info' href="{%url 'owner-login' %}">OWNER LOGIN</a></button>
+      </div >
+      <div class='row'>
+        <button class="btn"> <a class="info" href="{%url 'owner-signup' %}">OWNER SIGNUP </a> </button>
+      </div >
+      <div class='row '>
+        <button class="btn"><a class="info" href="{%url 'user-signup' %}">USER SIGNUP </a></button>
+      </div>
+      <div class='row'>
+        <button class="btn"><a class="info" href="{%url 'user-login' %}">USER LOGIN </a></button>
+      </div>
+    </div>
+    
+    </body>
+</html>

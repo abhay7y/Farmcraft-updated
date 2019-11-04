@@ -1,0 +1,80 @@
+{% load staticfiles %} 
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Choose plot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <style>
+
+    .plot-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .plot {
+      border: 2px solid;
+      margin: 2vw;
+      padding: 2vw;    
+    }
+    
+    .row{
+        content: "";
+        width: 30%
+        display: table;
+        clear: both;
+    }
+
+    .grey{
+        background-color: white;
+        width: 300px;
+        border: 5px black;
+        padding: 20px;
+        margin: 5px;
+      }
+
+    .black{
+        background-color: violet;
+        width: 400px;
+        border: 15px solid green;
+        padding: 20px;
+        margin: 20px;
+      }
+  
+  </style>
+  <body style="background-color:#FF0C3B;">
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div> 
+
+    <p style="">PLOTS:</p>
+    {% if Error %}
+    <p> {{error}} </p> 
+    {% endif %}
+    <div class="plot-container"> 
+      {% for owner,crop_set in info.items %}
+      <div class="plot">
+        <p>Owner Name : {{ owner.owner.username }}</p>
+        <p>Location : {{ owner.location }}</p>
+        
+        <form method="POST" action="#">
+          {% csrf_token %}
+          <input type="text" name="Owner" value="{{ owner.owner.username }}" hidden />
+          <p>
+            Crops: <br> 
+              <div class="grey">#1 {{ crop_set.crop1.cropname }} - Rs.{{crop_set.crop1.cost}} <input type="checkbox" name="crop1" value="{{ crop_set.crop1.cropname }}"></div>
+              <div class="grey"> #2 {{ crop_set.crop2.cropname }} - Rs.{{crop_set.crop2.cost}} <input type="checkbox" name="crop2" value="{{ crop_set.crop2.cropname }}"></div>
+              <div class="grey">#3 {{ crop_set.crop3.cropname }} - Rs.{{crop_set.crop3.cost}} <input type="checkbox" name="crop3" value="{{ crop_set.crop3.cropname }}"></div>
+          </p>
+          <button type="submit">RENT</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

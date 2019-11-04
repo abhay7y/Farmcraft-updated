@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>PLOT DETAILS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  
+  <body style="background-color:#FF0C3B;">
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div>
+    <hr>
+    <br />
+    {% for rented_plot in rented_plots %}
+    <p>OWNER: {{ rented_plot.owner.owner.username}}</p>
+    <h4>Crops:</h4>
+    {% if rented_plot.crop1.cropname %}
+    <p> #1 {{rented_plot.crop1.cropname}} </p>
+    {% else %}
+    <p> #1 --- </p>
+    {% endif %}
+
+    {% if rented_plot.crop2.cropname %}
+    <p> #2 {{rented_plot.crop2.cropname}} </p>
+    {% else %}
+    <p> #2 --- </p>
+    {% endif %}
+
+    {% if rented_plot.crop3.cropname %}
+    <p> #3 {{rented_plot.crop3.cropname}} </p>
+    {% else %}
+    <p> #3 --- </p>
+    {% endif %}
+    <p>
+      Location: {{ rented_plot.owner.location }}
+    </p>
+    <h4>
+      Cost: 
+    </h4>
+    {% if rented_plot.crop1.cost %}
+    <p> #1 {{rented_plot.crop1.cost}} </p>
+    {% else %}
+    <p> #1 --- </p>
+    {% endif %}
+
+    {% if rented_plot.crop2.cost %}
+    <p> #2 {{rented_plot.crop2.cost}} </p>
+    {% else %}
+    <p> #2 --- </p>
+    {% endif %}
+
+    {% if rented_plot.crop3.cost %}
+    <p> #3 {{rented_plot.crop3.cost}} </p>
+    {% else %}
+    <p> #3 --- </p>
+    {% endif %}
+    <br><br><br>
+    <hr>
+    {% endfor %}
+    {% if error %}
+      <p> {{ error }}</p>
+    {% endif %} 
+  </body>
+</html>

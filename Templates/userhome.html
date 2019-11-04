@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>USER HOMEPAGE</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .flex-container {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 200px;
+        }
+        .flex-container > div {
+          margin: auto;  
+        }
+      .info{
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+      }
+
+      .btn{
+        background-color: rgb(7, 32, 74);
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        transition: 400ms;
+      }
+
+      .btn:hover{
+        background-color: rgb(232, 188, 42);
+      }
+
+      .info:hover{
+        color:black;
+        transition:400ms;
+        text-decoration:none;
+      }
+
+    </style>
+  </head>
+  <body style="background-color:#FF0C3B;"> 
+     <center>
+      <div>
+      <img src="{% static 'logo_new1.png' %}" width="50%">
+      </div> 
+      <div class="flex-container">
+      <div class='row'>         
+        <button class="btn"><a href="{% url 'plotdetails' %}" class="info">PLOT DETAILS</a></button>
+      </div>
+      <div class='row'>
+        <button class="btn"> <a href="{% url 'rentplot' %}" class="info"> RENT NEW PLOT</a></button>
+      </div>
+      <div class="row">
+        <button class="btn"><a href="{% url 'user-logout' %}" class="info">LOGOUT</a></button>
+      </div>
+    </div>
+  </center>
+  </body>
+</html>
+
+
+

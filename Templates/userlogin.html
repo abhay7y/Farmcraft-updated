@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>USER LOGIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <style>
+
+
+  /* Create three equal columns that floats next to each other */
+   .column {
+     float: CENTER;
+     width: 100%;
+     padding: 25px;
+     
+   }
+   /* Clear floats after the columns */
+   .row{
+     content: "";
+     width: 30%
+     display: table;
+     clear: both;
+   
+   }
+   </style>
+  </head>
+  <center>
+  <body  style="background-color:#FF0C3B;">
+    <div>
+      <center> <img src="{% static 'logo_new1.png' %}" width="40%"> </center>
+    </div>
+
+
+  <div class="row">
+
+   <h1>LOGIN </h1>
+    <form method="post">
+    <div class="row">
+      USERNAME :<input type="text" name="username" size='10px' style="height:px" /> <br />
+    </p>
+    </div>
+
+ 
+    PASSWORD : <input type="password" name="password" size='10px'/> <br />
+    </br>
+    </br>
+    <button type="submit">LOGIN</button></p>
+    </div>
+    {% csrf_token %} 
+    </form>
+  </body>
+</center>
+</html>
+  

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>OWNER HOME</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+    </style>
+  </head>
+  <body  style="background-color:#FF0C3B;" class="container-fluid"> 
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div> 
+
+        <h1>OWNER HOME</h1>
+        </br>
+        <h2>Current crops<h2>
+        </br>
+        {% for crop in ownercrops %}
+            <p>{{crop.cropname}} : Rs.{{crop.cost}}</p>
+        {% endfor %}
+        <br>
+        <h1>ADD CROPS</h1>
+        <form method='post' action="#">
+          {% csrf_token %}
+          <input type='text' name='add_crop' hidden>
+          Crop Name:<br>
+          <input type="text" name="cropname">
+          <br>
+          cost:<br>
+          <input type="text" name="cost" >
+          <br><br>
+          <input type="submit" value="SUBMIT">
+        </form> 
+        <br>
+        <br>
+        <h1>EDIT SUGGESTED CROPS</h1>   
+        <form method='post' action="#">
+          {% csrf_token %}
+            <input type='text' name='edit_suggested_crop' hidden>
+            <select name="suggested-crop-1">
+                {% for crop in ownercrops %}
+                  <option value="{{crop.cropname}}">{{crop.cropname}}</option>
+                {% endfor %}
+            </select>
+      
+            <select name="suggested-crop-2"> 
+                  {% for crop in ownercrops %}
+                    <option value="{{crop.cropname}}">{{crop.cropname}}</option>
+                  {% endfor %}
+            </select>
+              
+              <select name="suggested-crop-3"> 
+                    {% for crop in ownercrops %}
+                      <option value="{{crop.cropname}}">{{crop.cropname}}</option>
+                    {% endfor %}
+              </select>
+              <input type="submit" value="SUBMIT">
+        </form>
+        <br>  
+        
+        <!--
+          make two forms 
+          1st one to add crops 
+            - input 1 - cropname
+            - input 2 - cost
+          2nd one to select suggested crops from the crops that the owner has already added to the sql table
+            - SELECT tag you use
+            - with OPTION
+            - checck on google ( select tag in html  one sec 
+            - https://www.w3schools.com/tags/tag_select.asp
+            MAKE 3 drop downs 
+            - suggested crop 1
+            - suggested crop 2
+            - suggested crop 3
+            -  
+        -->
+        
+        <br>
+        
+        
+        <div>
+        <h1> Rented Plot Details </h1>
+          <table class="table table-bordered table-dark p-3">
+            <tr>
+              <th>User Name</th>
+              <th>Owner Name</th>
+              <th>Crop1 - COST</th>
+              <th>Crop2 - COST</th>
+              <th>Crop3 - COST</th>
+            </tr>
+            {% for plot in rentedplots %}
+              <tr>
+                <td>{{ plot.user.user.username }}</td>
+                <td>{{ plot.owner.owner.username}}</td>
+
+                {% if plot.crop1.cropname %}
+                <td>{{ plot.crop1.cropname}} - Rs.{{plot.crop1.cost}} </td>
+                {% else %}
+                <td> Crop 1 not selected </td>
+                {% endif %}
+
+                {% if plot.crop2.cropname %}
+                <td>{{ plot.crop2.cropname}} - Rs.{{plot.crop2.cost}} </td>
+                {% else %}
+                <td> Crop 2 not selected </td>
+                {% endif %}
+                
+                {% if plot.crop3.cropname %}
+                <td>{{ plot.crop3.cropname}} - Rs.{{plot.crop3.cost}} </td>
+                {% else %}
+                <td> Crop 3 not selected </td>
+                {% endif %}
+
+              </tr>
+            {% endfor %}
+          </table>
+          <br>
+          <div>
+            <a href="{% url 'user-logout' %}"><button>LOGOUT</button></a>
+          </div>       
+        </div>
+        <br>
+        <br>
+  </body>
+</html>
+ 
+
+
+ <!-- TODO : 
+    - What the hell do we show here? :
+      - All the ppl who have taken a plot
+      - How many plots left      
+    - What to get from DJANGO :
+      - The rented plot details from RentedPlot model
+      - OwnerProfile
+        - Owner's user model ->
+          - Username
+          - No of plots owned 
+-->  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

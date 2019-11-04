@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>OWNER SIGN-UP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body  style="background-color:#FF0C3B;">
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div>
+    <center>
+    <hr>
+    <form method="post">
+    {% csrf_token %} 
+
+        USERNAME :<input type="text" name="username" /> <br /> 
+    </br>
+    <br>
+
+        NO OF PLOTS OWNED : <input type='text' name='no_of_plots_owned'/>
+    </br>
+    <br>
+
+        SUGGESTED CROPS 1: <input type = 'text' name='crop1' /> 
+    </br>
+    <br>
+    
+        COST1: <input type = "integer" name = 'cost1'>
+    </br>
+    <br>  
+    SUGGESTED CROPS 2: <input type = 'text' name='crop2' />
+    </br>
+    <br> 
+    COST2: <input type = "integer" name = 'cost2'>
+    </br>
+    <br> 
+    SUGGESTED CROPS 3: <input type = 'text' name='crop3' /> 
+    </br>
+    <br>  
+    COST3: <input type = "integer" name = 'cost3'>
+    </br>
+    <br> 
+    LOCATION : <input type='text' name='location' /> 
+    </br>
+    <br> 
+    PASSWORD : <input type="password" name="password" />
+    </br>
+    <br> 
+    <button type="submit">SIGN UP</button>
+    </form>
+    </center>
+  </body>
+</html>

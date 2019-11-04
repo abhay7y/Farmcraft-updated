@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>OWNER LOGIN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <style>
+  .column {
+    float: CENTER;
+    width: 100%;
+    padding: 25px;
+    
+  }
+  /* Clear floats after the columns */
+  .row{
+    content: "";
+    width: 30%
+    display: table;
+    clear: both;
+  
+  }
+  </style>
+  <body  style="background-color:#FF0C3B;">
+    <div>
+      <center><img src="{% static 'logo_new1.png' %}" width="50%"></center>
+    </div>
+    <CENTER>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+      OWNER USERNAME :<input type="text" name="username" size='10px' style="height:25px" /> <br />
+      </p>
+      </div>
+      <br>
+      <br>
+      <div class="row">      
+      OWNER PASSWORD : <input type="password" name="password" size='10px' style="height:25px" /> <br />
+      </p>
+      <br>
+      <br>
+    </div>
+
+      <button type="submit" style="height:30px">Login</button>
+    </CENTER>
+    </form>
+  </body>
+</html>
